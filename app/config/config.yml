@@ -7,6 +7,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    instagram_api_client_id: YOUR_API_ID
+    instagram_api_client_secret: YOUR_API_SECRET
 
 framework:
     #esi:             ~
@@ -66,3 +68,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+imports:
+    - { resource: "@OhInstagramBundle/Resources/config/services.yml" }
+
+oh_instagram:
+    instaphp:
+        config:
+            client_id: %instagram_api_client_id%
+            client_secret: %instagram_api_client_secret%
